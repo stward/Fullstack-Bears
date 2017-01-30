@@ -42,8 +42,6 @@ app.post('/api/bears', function(req, res) {
 
 });
 
-
-//implement route that returns one specific bear
 app.get('/api/bears/:bear_id', function(req, res) {
   Bear.findById( req.params.bear_id, function(err, bearData) {
     if(err){
@@ -53,7 +51,6 @@ app.get('/api/bears/:bear_id', function(req, res) {
     }
   });
 });
-
 
 app.put('/api/bears/:bear_id', function(req, res) {
   Bear.findById( req.params.bear_id, function(err, bear) {
@@ -81,7 +78,15 @@ app.put('/api/bears/:bear_id', function(req, res) {
   });
 });
 
-
+app.delete('/api/bears/:bear_id', function(req, res) {
+  Bear.remove({ _id: req.params.bear_id }, function(err, b){
+    if(err){
+      console.log(err, "COULD NOT DELETE BEAR");
+    } else {
+      res.json({ message: "BEAR DELETED" });
+    }
+  });
+});
 
 
 app.listen(3000, function(){
