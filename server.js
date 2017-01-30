@@ -55,6 +55,35 @@ app.get('/api/bears/:bear_id', function(req, res) {
 });
 
 
+app.put('/api/bears/:bear_id', function(req, res) {
+  Bear.findById( req.params.bear_id, function(err, bear) {
+    if(err){
+      console.log(err)
+    } else {
+
+      bear.age = req.body.age ? req.body.age : bear.age;
+      bear.species = req.body.species ? req.body.species : bear.species;
+      bear.attitude = req.body.attitude ? req.body.attitude : bear.attitude;
+      bear.color = req.body.color ? req.body.color : bear.color;
+      bear.weight = req.body.weight ? req.body.weight : bear.weight;
+      bear.location = req.body.location ? req.body.location : bear.location;
+      bear.name = req.body.name ? req.body.name : bear.name;
+
+      bear.save(function(e, updatedBear){
+        if(e){
+          console.log(e, "ERROR UPDATING BEAR");
+        } else {
+          res.json(updatedBear);
+        }
+      });
+
+    }
+  });
+});
+
+
+
+
 app.listen(3000, function(){
   console.log("lets get 👾 👾 👾 👾 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 👾 👾 👾 👾 up on port 3000");
 });
