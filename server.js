@@ -43,6 +43,18 @@ app.post('/api/bears', function(req, res) {
 });
 
 
+//implement route that returns one specific bear
+app.get('/api/bears/:bear_id', function(req, res) {
+  Bear.findById( req.params.bear_id, function(err, bearData) {
+    if(err){
+      console.log(err, "Error finding one specific bear");
+    } else {
+      res.json(bearData);
+    }
+  });
+});
+
+
 app.listen(3000, function(){
   console.log("lets get 👾 👾 👾 👾 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 👾 👾 👾 👾 up on port 3000");
 });
