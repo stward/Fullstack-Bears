@@ -10,7 +10,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/bears', function(req, res){
-  res.json({ message: "You found the bears route!" });
+  Bear.find(function(err, data) {
+    if(err){
+      console.log(err, "Error finding all bearers");
+    } else {
+      res.json(data);
+    }
+  });
 });
 
 app.post('/api/bears', function(req, res) {
