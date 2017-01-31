@@ -10,6 +10,8 @@ mongoose.connect("mongodb://localhost/fullstack-bears");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.static('public'));
+
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
@@ -25,6 +27,7 @@ app.get('/bears', function (req, res) {
     } else {
       res.render('bears', {bears: data});
     }
+  });
 });
 
 app.get('/api/bears', function(req, res){
@@ -75,7 +78,6 @@ app.put('/api/bears/:bear_id', function(req, res) {
     if(err){
       console.log(err)
     } else {
-
       bear.age = req.body.age ? req.body.age : bear.age;
       bear.species = req.body.species ? req.body.species : bear.species;
       bear.attitude = req.body.attitude ? req.body.attitude : bear.attitude;
@@ -91,7 +93,6 @@ app.put('/api/bears/:bear_id', function(req, res) {
           res.json(updatedBear);
         }
       });
-
     }
   });
 });
