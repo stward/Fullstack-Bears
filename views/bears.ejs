@@ -18,12 +18,12 @@
         <div class="row">
         <form id="newBear" class="form-control">
           <div class="form-group">
-            <input type="text" name="name" placeholder="Name">
-            <input type="text" name="age" placeholder="Age">
-            <input type="text" name="location" placeholder="Location">
-            <input type="text" name="species" placeholder="Species">
-            <input type="text" name="attitude" placeholder="Attidude">
-            <input type="text" name="weight" placeholder="Weight">
+            <input type="text" id="name" name="name" placeholder="Name">
+            <input type="text" id="age" name="age" placeholder="Age">
+            <input type="text" id="location" name="location" placeholder="Location">
+            <input type="text" id="species" name="species" placeholder="Species" />
+            <input type="text" id="attitude" name="attitude" placeholder="Attidude">
+            <input type="text" id="weight" name="weight" placeholder="Weight">
             <input type="submit" class="btn btn-danger" value="Add The Bear">
           </div>
         </form>
@@ -50,7 +50,8 @@
                 <td><%= bears[i].location %></td>
                 <td><%= bears[i].age %></td>
                 <td><%= bears[i].attitude %></td>
-                <td><button id="<%= bears[i]._id %>" type="button" class="btn btn-primary delete">Delete</button>
+                <td><button id="del-<%= bears[i]._id %>" type="button" class="btn btn-primary delete">Delete</button>
+                <td><button id="update-<%= bears[i]._id %>" type="button" class="btn btn-primary update">Update</button>
               </tr>
             <% } %>
           </tbody>
