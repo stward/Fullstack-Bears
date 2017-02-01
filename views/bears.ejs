@@ -15,14 +15,14 @@
     </div>
 
     <div class="container">
-        <div class="row">
+      <div class="row">
         <form id="newBear" class="form-control">
           <div class="form-group">
             <input type="text" id="name" name="name" placeholder="Name">
             <input type="text" id="age" name="age" placeholder="Age">
             <input type="text" id="location" name="location" placeholder="Location">
             <input type="text" id="species" name="species" placeholder="Species" />
-            <input type="text" id="attitude" name="attitude" placeholder="Attidude">
+            <input type="text" id="attitude" name="attitude" placeholder="Attitude">
             <input type="text" id="weight" name="weight" placeholder="Weight">
             <input type="submit" class="btn btn-danger" value="Add The Bear">
             <button type="button" id="update-btn" class="btn btn-primary">Update Bear</button>
@@ -37,13 +37,13 @@
             <th><strong>Name</strong></th>
             <th><strong>Species</strong></th>
             <th><strong>Weight</strong></th>
-            <th><strong>location</strong></th>
+            <th><strong>Location</strong></th>
             <th><strong>Age</strong></th>
             <th><strong>Attitude</strong></th>
           </tr>
         </thead>
         <tbody>
-          <% for (var i = 0; i<bears.length; i++) { %>
+          <% for (var i = 0; i < bears.length; i++) { %>
               <tr>
                 <td><%= bears[i].name %></td>
                 <td><%= bears[i].species %></td>

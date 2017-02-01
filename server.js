@@ -14,11 +14,7 @@ app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
-app.get('/', function (req, res) {
-  var date = moment();
-  res.render('index', {name: "Carl", date: date.format("MMM Do YYYY"),
-                      time: date.format("hh:mm:ss A")});
-});
+var indexRoute = require('./routes/index.js');
 
 app.get('/bears', function (req, res) {
   Bear.find(function(err, data) {
@@ -107,6 +103,7 @@ app.delete('/api/bears/:bear_id', function(req, res) {
   });
 });
 
+app.use('/', indexRoute);
 
 app.listen(3000, function(){
   console.log("lets get 👾 👾 👾  🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 👾 👾 👾 up on port 3000");

@@ -1,7 +1,7 @@
 $(document).ready(function() {
   console.log("We are linked to the static js file.");
 
-  var updateingBear;
+  var updatingBear;
 
   $(".delete").on('click', function () {
     var bearId = $(this).attr('id').slice(4);
@@ -42,7 +42,7 @@ $(document).ready(function() {
 
   $('.update').on('click', function () {
     var bearId = $(this).attr('id').slice(7);
-    updateingBear = bearId;
+    updatingBear = bearId;
     console.log(bearId);
     $.get('/api/bears/'+bearId).done(function (data) {
       console.log(data);
@@ -64,7 +64,7 @@ $(document).ready(function() {
                       species: $('#species').val()
                     };
     $.ajax({
-      url: '/api/bears/' + updateingBear,
+      url: '/api/bears/' + updatingBear,
       method: 'PUT',
       data: updateData
     }).done(function (data) {
