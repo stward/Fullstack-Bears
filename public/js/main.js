@@ -1,6 +1,8 @@
 $(document).ready(function() {
   console.log("We are linked to the static js file.");
 
+  var updateingBear;
+
   $(".delete").on('click', function () {
     var bearId = $(this).attr('id').slice(4);
     console.log(bearId);
@@ -40,10 +42,33 @@ $(document).ready(function() {
 
   $('.update').on('click', function () {
     var bearId = $(this).attr('id').slice(7);
+    updateingBear = bearId;
     console.log(bearId);
     $.get('/api/bears/'+bearId).done(function (data) {
       console.log(data);
       $('#name').val(data.name);
+      $('#age').val(data.age);
+      $('#location').val(data.location);
+      $('#attitude').val(data.attitude);
+      $('#weight').val(data.weight);
+      $('#species').val(data.species);
+    });
+  });
+
+  $('#update-btn').on('click', function () {
+    var updateData = {name: $('#name').val(),
+                      age: $('#age').val(),
+                      location: $('#location').val(),
+                      attitude: $('#attitude').val(),
+                      weight: $('#weight').val(),
+                      species: $('#species').val()
+                    };
+    $.ajax({
+      url: '/api/bears/' + updateingBear,
+      method: 'PUT',
+      data: updateData
+    }).done(function (data) {
+      console.log(data);
     });
   });
 
