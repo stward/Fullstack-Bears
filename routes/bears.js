@@ -1,7 +1,5 @@
 var express = require('express');
-
 var router = new express.Router();
-
 var Bear = require('../models/bear');
 
 router.use(function(req, res, next) {
@@ -48,7 +46,7 @@ router.route('/bears/:bear_id')
       } else {
         res.json(bearData);
       }
-    })
+    });
   })
   .put(function(req, res) {
     Bear.findById( req.params.bear_id, function(err, bear) {

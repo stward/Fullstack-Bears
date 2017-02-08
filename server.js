@@ -2,9 +2,8 @@ var express = require('express');
 var app = express();
 var Bear = require('./models/bear');
 var bodyParser = require('body-parser');
-var moment = require('moment');
-
 var mongoose = require('mongoose');
+
 mongoose.connect("mongodb://localhost/fullstack-bears");
 
 app.use(bodyParser.json());
