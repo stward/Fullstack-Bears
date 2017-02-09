@@ -29,6 +29,6 @@ app.get('/bears', function (req, res) {
 app.use('/', indexRoute);
 app.use('/api', bearsRoute);
 
-app.listen(3000, function(){
+app.listen(3001, function(){
   console.log("lets get 👾 👾 👾  🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 🎮 🔥 👾 👾 👾 up on port 3000");
 });

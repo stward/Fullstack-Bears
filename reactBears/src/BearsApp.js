@@ -1,21 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './BearsApp.css';
+import Home from './Home';
+import ViewAllBears from './ViewAllBears';
+import PostBearsData from './PostBearsData';
 
-class App extends Component {
-  render() {
+var BearsApp = React.createClass({
+  getInitialState: function() {
+    return {activeComponent: "Home"};
+  },
+  updateActiveComponent: function (whichIsActive) {
+    this.setState({activeComponent: whichIsActive});
+  },
+  renderComponent: function() {
+    if (this.state.activeComponent === 'Home') {
+      return <Home updateActiveComponent={this.updateActiveComponent} />
+    } else if (this.state.activeComponent === 'viewAll') {
+      return <ViewAllBears />
+    } else if (this.state.activeComponent === 'postNew') {
+      return <PostBearsData />
+    } else {
+      return null
+    }
+  },
+  render: function() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        {this.renderComponent()}
       </div>
     );
   }
-}
+});
 
-export default App;
+export default BearsApp;
